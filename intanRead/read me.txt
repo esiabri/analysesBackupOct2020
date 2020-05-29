@@ -1,0 +1,1 @@
+output in data: "the channels voltage in micro-volts"

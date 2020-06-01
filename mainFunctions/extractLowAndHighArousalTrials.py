@@ -1,8 +1,9 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 def extractLowAndHighArousalTrials(framesStartSample, pupilSize, stimOnset, \
                 timeWindowBeforeStimStart = 500,\
-                timeWindowAfterStimStart = 500, frameRate = 30):
+                timeWindowAfterStimStart = 500, frameRate = 30, distFig=1, figxLabel='movement quantity'):
 
     # framesStartTimeInMS = framesStartSample*1e3/fs
 
@@ -26,5 +27,13 @@ def extractLowAndHighArousalTrials(framesStartSample, pupilSize, stimOnset, \
         
     lowArousalStimTrials = np.where(pupilSizeAtStimOnset<(np.median(pupilSizeAtStimOnset)))[0]
     highArousalStimTrials = np.where(pupilSizeAtStimOnset>(np.median(pupilSizeAtStimOnset)))[0]
+
+    if distFig:
+
+        plt.figure()
+        plt.hist(pupilSizeAtStimOnset,bins=50)#int(len(framesStartSample)/1000))
+        plt.xlabel(figxLabel)
+        plt.ylabel('trial No')
+        plt.axvline(np.median(pupilSizeAtStimOnset))
 
     return lowArousalStimTrials, highArousalStimTrials

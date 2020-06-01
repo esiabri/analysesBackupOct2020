@@ -44,10 +44,10 @@ def firingRate(spikeTimes,startTime=None,endTime=None,dt=1e-3,windowSize=50e-3,s
     for windowCounter in range(len(timePoints)):
 
         # finding the index of the first spike in the window (index: the spike number)
-        indsStart = np.searchsorted(spikeTimes.squeeze(), startTime + ((windowCounter)*dt))
+        indsStart = np.searchsorted(spikeTimes, startTime + ((windowCounter)*dt))
 
         #finding the index of the last spike in the window
-        indsEnd = np.searchsorted(spikeTimes.squeeze(), startTime + ((windowCounter)*dt)+windowSize)
+        indsEnd = np.searchsorted(spikeTimes, startTime + ((windowCounter)*dt)+windowSize)
                  
         # estimated firing rate in the window: (number of spikes in the window)/(window duration)
         FR[windowCounter] = (indsEnd - indsStart)/windowSize

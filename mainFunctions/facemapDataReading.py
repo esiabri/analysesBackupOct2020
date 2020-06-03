@@ -100,7 +100,7 @@ def facemapDataReading(cameraStrobe,dataFileBaseFolder,darkMode = False,\
     # the total number of frames based on the detected strobes with the above procedure
     totalNumberOfStrobeSignals = len(framesStartSample)
 
-    # in some sessions the experimenter have missed the right order in the begining and we don't have
+    # in some sessions the experimenter has missed the right order in the begining and we don't have
     # the correct starting sync, so we use here the last frame to get the frame sync
     if not(firstStrobeValid):
         framesStartSample = framesStartSample[-totalNumberOfSavedFrames:]

@@ -24,3 +24,6 @@ def polarTuningCurve(responseVector, figtitle = '', darkMode = False):
 
     if isinstance(figtitle, float):
         axTuningPolar.set_title('OSI: %(number)0.2f'%{'number':figtitle}, pad = 20)
+
+    else:
+        axTuningPolar.set_title(figtitle, pad = 20)
